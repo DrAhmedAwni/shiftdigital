@@ -18,15 +18,16 @@
 
 .header-inner {
   min-height: 84px;
-  display: flex;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto auto;
   align-items: center;
-  justify-content: space-between;
   gap: 18px;
 }
 
 .primary-nav {
   display: inline-flex;
   align-items: center;
+  justify-content: flex-end;
   gap: 24px;
 }
 
@@ -148,12 +149,12 @@
   }
 
   .header-inner {
-    flex-wrap: wrap;
+    grid-template-columns: auto auto auto;
     padding: 14px 0;
   }
 
   .primary-nav {
-    width: 100%;
+    grid-column: 1 / -1;
     order: 3;
   }
 
@@ -184,4 +185,3 @@
     padding: 16px 0 6px;
   }
 }
-
