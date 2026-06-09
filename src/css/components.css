@@ -138,6 +138,12 @@ body[data-theme="dark"] .theme-icon-dark {
   transform: translateY(-1px);
 }
 
+.btn:disabled {
+  cursor: not-allowed;
+  opacity: 0.68;
+  transform: none;
+}
+
 .btn-sm {
   min-height: 44px;
   padding-inline: 16px;

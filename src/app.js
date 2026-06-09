@@ -24,6 +24,8 @@ const CONTACT = {
   whatsapp: '201140141320',
 };
 
+const LEAD_WEBHOOK_URL = 'https://n8n.bdigital-dental.site/webhook/shift-digital-request';
+
 const CONTENT = {
   en: {
     title: 'ShiftDigital | Websites, Apps, Automation & Lead Generation',
@@ -160,7 +162,9 @@ const CONTENT = {
       submitRequest: 'Send Project Request',
       whatsapp: 'WhatsApp',
       requiredError: 'Please fill in the required fields before sending the request.',
-      preparing: 'Preparing your message...',
+      preparing: 'Sending your request...',
+      success: 'Your request was sent successfully. We will contact you soon.',
+      sendError: 'Something went wrong while sending your request. Please try again or contact us on WhatsApp.',
       phoneDisplay: CONTACT.phone,
       emailDisplay: CONTACT.email,
       whatsappLabel: 'WhatsApp',
@@ -314,7 +318,9 @@ const CONTENT = {
       submitRequest: 'إرسال طلب المشروع',
       whatsapp: 'واتساب',
       requiredError: 'يرجى ملء الحقول المطلوبة قبل إرسال الطلب.',
-      preparing: 'جاري تجهيز رسالتك...',
+      preparing: 'جاري إرسال طلبك...',
+      success: 'تم إرسال طلبك بنجاح. سنتواصل معك قريبا.',
+      sendError: 'حدث خطأ أثناء إرسال الطلب. يرجى المحاولة مرة أخرى أو التواصل عبر واتساب.',
       phoneDisplay: CONTACT.phone,
       emailDisplay: CONTACT.email,
       whatsappLabel: 'واتساب',
@@ -865,7 +871,7 @@ function mountApp(language = activeLanguage) {
   const form = document.getElementById('lead-form');
   const status = document.getElementById('form-status');
   if (form && status) {
-    form.addEventListener('submit', (event) => {
+    form.addEventListener('submit', async (event) => {
       event.preventDefault();
       const data = new FormData(form);
       const name = String(data.get('name') || '').trim();
@@ -881,23 +887,47 @@ function mountApp(language = activeLanguage) {
         return;
       }
 
-      const body = [
-        `Name: ${name}`,
-        `Email: ${email}`,
-        phone ? `Phone / WhatsApp: ${phone}` : null,
-        businessType ? `Business type: ${businessType}` : null,
-        service ? `Service needed: ${service}` : null,
-        '',
+      const payload = {
+        source: 'ShiftDigital website',
+        language,
+        name,
+        email,
+        phone,
+        businessType,
+        service,
         message,
-      ].filter(Boolean).join('\n');
+        submittedAt: new Date().toISOString(),
+      };
+
+      const submitButton = form.querySelector('button[type="submit"]');
+      if (submitButton) submitButton.disabled = true;
 
       status.textContent = copy.contact.preparing;
       status.className = 'form-status is-success';
-      const subject = encodeURIComponent(`Project inquiry from ${name}`);
-      const mailto = `mailto:${CONTACT.email}?subject=${subject}&body=${encodeURIComponent(body)}`;
-      window.location.href = mailto;
+
+      try {
+        const response = await fetch(LEAD_WEBHOOK_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload),
+        });
+
+        if (!response.ok) {
+          throw new Error(`Webhook failed with ${response.status}`);
+        }
+
+        status.textContent = copy.contact.success;
+        status.className = 'form-status is-success';
+        form.reset();
+      } catch (error) {
+        console.error(error);
+        status.textContent = copy.contact.sendError;
+        status.className = 'form-status is-error';
+      } finally {
+        if (submitButton) submitButton.disabled = false;
+      }
     });
   }
 }
 
-document.addEventListener('DOMContentLoaded', mountApp);
+document.addEventListener('DOMContentLoaded', () => mountApp());
