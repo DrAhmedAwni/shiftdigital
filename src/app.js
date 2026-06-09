@@ -37,7 +37,7 @@ async function bootstrap() {
     console.error('Failed to initialize application:', err);
     const app = document.getElementById('app');
     if (app) {
-      app.innerHTML = '<div class="container"><p style="padding: 2rem; color: var(--color-danger);">Failed to start the application. Please ensure your browser supports OPFS and WebAssembly.</p></div>';
+      app.innerHTML = '<div class="container"><p style="padding: 2rem; color: var(--color-danger);">Failed to start the application. This app requires a browser with WebAssembly support. OPFS is optional and will fall back automatically when unavailable.</p></div>';
     }
   }
 }
