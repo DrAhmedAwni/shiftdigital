@@ -3,421 +3,715 @@ import './css/layout.css';
 import './css/components.css';
 import './css/states.css';
 
-const services = [
+const ASSETS = {
+  logo: '/assets/shiftdigital-logo.png',
+  hero: '/assets/shiftdigital-hero-innovation.png',
+  transformation: '/assets/shiftdigital-transformation.png',
+  mark: '/assets/shiftdigital-square-mark.png',
+};
+
+const NAV_ITEMS = [
+  { label: 'Home', href: '#home' },
+  { label: 'Services', href: '#services' },
+  { label: 'Projects', href: '#projects' },
+  { label: 'Process', href: '#process' },
+  { label: 'About', href: '#about' },
+  { label: 'Contact', href: '#contact' },
+];
+
+const SERVICES = [
   {
-    title: 'Websites',
-    description: 'Fast, credible marketing sites that make the offer clear and turn visits into conversations.',
-    icon: 'browser',
+    title: 'Website Development',
+    description: 'Premium websites that explain your offer quickly, load fast, and convert more visitors into leads.',
+    benefit: 'Sharper first impression',
+    icon: 'globe',
   },
   {
-    title: 'Web Apps',
-    description: 'Custom product interfaces with clean architecture, smooth workflows, and practical state handling.',
-    icon: 'grid',
+    title: 'Web App Development',
+    description: 'Custom web applications that streamline workflows, reduce friction, and keep teams aligned.',
+    benefit: 'Cleaner operations',
+    icon: 'window',
   },
   {
-    title: 'Mobile Apps',
-    description: 'Responsive app experiences designed to feel natural on smaller screens and ship with confidence.',
+    title: 'Mobile App Development',
+    description: 'Mobile experiences built for touch, clarity, and reliable performance across devices.',
+    benefit: 'Better everyday use',
     icon: 'phone',
   },
   {
-    title: 'Systems Dashboards',
-    description: 'Operational dashboards for teams that need clarity, speed, and dependable decision support.',
-    icon: 'chart',
+    title: 'AI Tools',
+    description: 'Practical AI features that save time, surface insights, and support smarter decisions.',
+    benefit: 'Less manual work',
+    icon: 'spark',
+  },
+  {
+    title: 'Business Automation',
+    description: 'Automations for repetitive tasks, follow-ups, approvals, and internal handoffs.',
+    benefit: 'Fewer errors',
+    icon: 'bot',
+  },
+  {
+    title: 'Digital Systems',
+    description: 'Dashboards and internal systems that make it easier to monitor, manage, and scale.',
+    benefit: 'More control',
+    icon: 'dashboard',
   },
 ];
 
-const process = [
+const TRANSFORMATION = [
+  'Manual processes',
+  'Disconnected tools',
+  'Slow response times',
+  'Scattered data',
+  'Clear dashboards',
+  'Automated workflows',
+  'Better customer experience',
+  'Faster business growth',
+];
+
+const PROJECTS = [
+  {
+    title: 'Clinic Launch Website',
+    category: 'Website',
+    problem: 'Needed a trustworthy site that made services and contact options instantly clear.',
+    solution: 'A clean conversion-focused structure with stronger storytelling and contact flow.',
+    result: 'More qualified inquiries and a more professional first impression.',
+    image: ASSETS.hero,
+  },
+  {
+    title: 'Operations Dashboard',
+    category: 'Systems Dashboard',
+    problem: 'Teams were tracking work across too many sheets and chat threads.',
+    solution: 'A centralized dashboard with status visibility, priorities, and clear next actions.',
+    result: 'Less confusion and faster handoff between team members.',
+    image: ASSETS.transformation,
+  },
+  {
+    title: 'Mobile Service App',
+    category: 'Mobile App',
+    problem: 'Field users needed a simple way to complete tasks from their phones.',
+    solution: 'A streamlined mobile workflow with focused screens and minimal friction.',
+    result: 'More work completed without returning to desktop tools.',
+    image: ASSETS.mark,
+  },
+  {
+    title: 'AI Automation Flow',
+    category: 'AI Tool',
+    problem: 'Manual follow-up tasks were taking too long to manage.',
+    solution: 'An AI-assisted workflow that organized requests and routed actions automatically.',
+    result: 'Faster turnaround with less repetitive work.',
+    image: null,
+  },
+];
+
+const PROCESS = [
   {
     step: '01',
     title: 'Discover',
-    description: 'We map goals, users, scope, and constraints before anything gets built.',
-    icon: 'chat',
+    description: 'We define the business goal, users, and required outcomes before any design work starts.',
+    icon: 'search',
   },
   {
     step: '02',
-    title: 'Build',
-    description: 'I design the interface, ship the code, and keep the system tidy and maintainable.',
-    icon: 'code',
+    title: 'Plan',
+    description: 'We map content, structure, features, and the best path to conversion.',
+    icon: 'map',
   },
   {
     step: '03',
+    title: 'Design',
+    description: 'The interface is shaped around clarity, trust, and a premium visual system.',
+    icon: 'pen',
+  },
+  {
+    step: '04',
+    title: 'Build',
+    description: 'The site or app is coded cleanly with reusable components and responsive behavior.',
+    icon: 'code',
+  },
+  {
+    step: '05',
+    title: 'Automate',
+    description: 'Workflows, forms, and handoffs are connected so the system does more of the heavy lifting.',
+    icon: 'workflow',
+  },
+  {
+    step: '06',
     title: 'Launch',
-    description: 'We test, refine, deploy, and keep iterating after the first release.',
+    description: 'We test, refine, publish, and improve the product based on real use.',
     icon: 'rocket',
   },
-];
-
-const projects = [
   {
-    name: 'Nexora',
-    type: 'Marketing website',
-    description: 'A sharp launch site with a premium product story and clear conversion paths.',
-  },
-  {
-    name: 'Pulse Finance',
-    type: 'Mobile app',
-    description: 'A compact financial experience with account overviews, activity, and alerts.',
-  },
-  {
-    name: 'OpsCentral',
-    type: 'Web application',
-    description: 'An internal operations tool for monitoring workflows and resolving issues faster.',
-  },
-  {
-    name: 'DataHub',
-    type: 'Systems dashboard',
-    description: 'A data-rich control panel built for scanning trends, exceptions, and priorities.',
+    step: '07',
+    title: 'Improve',
+    description: 'After launch, we keep listening, refining, and adding the next useful layer.',
+    icon: 'spark',
   },
 ];
 
-const socialLinks = [
-  { label: 'GitHub', href: 'https://github.com/' },
-  { label: 'LinkedIn', href: 'https://www.linkedin.com/' },
-  { label: 'Email', href: 'mailto:hello@shiftdigital.dev' },
+const TRUST = [
+  {
+    title: 'Clear communication',
+    text: 'You always know what is happening, what comes next, and what to approve.',
+  },
+  {
+    title: 'Practical delivery',
+    text: 'The work is shaped around real business value, not visual noise or unnecessary complexity.',
+  },
+  {
+    title: 'Built for trust',
+    text: 'The design and messaging make the brand feel credible from the first screen onward.',
+  },
 ];
 
-function icon(name) {
-  const common = 'width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"';
+const FAQS = [
+  {
+    q: 'What does Shift Digital build?',
+    a: 'Websites, web apps, mobile apps, AI tools, automation flows, and internal systems that help businesses work better.',
+  },
+  {
+    q: 'Can you help me decide what my business needs?',
+    a: 'Yes. We can start with the problem, then choose the right mix of website, app, dashboard, or automation.',
+  },
+  {
+    q: 'Do you work with clinics and small businesses?',
+    a: 'Yes. The site is designed to speak clearly to both service businesses and growth-focused companies.',
+  },
+  {
+    q: 'How long does a project take?',
+    a: 'The timeline depends on scope, but we always define phases and keep the process predictable.',
+  },
+  {
+    q: 'Do I need technical knowledge to start?',
+    a: 'No. We guide the process in plain language and handle the technical decisions for you.',
+  },
+  {
+    q: 'How do I start?',
+    a: 'Use the contact form or WhatsApp button and tell us what you want to improve or build.',
+  },
+];
 
-  const map = {
-    arrow: `<svg ${common}><path d="M5 12h14" /><path d="m13 5 7 7-7 7" /></svg>`,
-    browser: `<svg ${common}><rect x="3" y="4" width="18" height="16" rx="2" /><path d="M3 8h18" /><path d="M7 6h.01" /><path d="M11 6h.01" /></svg>`,
-    grid: `<svg ${common}><rect x="3" y="4" width="7" height="7" rx="1.2" /><rect x="14" y="4" width="7" height="7" rx="1.2" /><rect x="3" y="15" width="7" height="5" rx="1.2" /><rect x="14" y="15" width="7" height="5" rx="1.2" /></svg>`,
-    phone: `<svg ${common}><rect x="7" y="2" width="10" height="20" rx="2.2" /><path d="M10 18h4" /></svg>`,
-    chart: `<svg ${common}><path d="M4 19V5" /><path d="M4 19h16" /><path d="M7 15l4-4 3 3 5-7" /><path d="M18 7h1v1" /></svg>`,
-    chat: `<svg ${common}><path d="M21 15a4 4 0 0 1-4 4H8l-5 3V7a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4z" /><path d="M8 9h8" /><path d="M8 13h5" /></svg>`,
-    code: `<svg ${common}><path d="m8 8-4 4 4 4" /><path d="m16 8 4 4-4 4" /><path d="M14 5 10 19" /></svg>`,
-    rocket: `<svg ${common}><path d="M14 4c2.5.2 4.8 2.5 5 5-1.8.4-3.2 1.4-4.4 2.6L10 16l-2-2 4.4-4.6C13.6 8 14.6 6.6 15 4.8" /><path d="M9 15l-2 2-2-2 2-2" /><path d="M8 16c-1.4 1.5-2.4 3.4-2.8 5.2 1.8-.4 3.7-1.4 5.2-2.8" /></svg>`,
+const CONTACT_OPTIONS = {
+  businessTypes: ['Clinic', 'Local business', 'Startup', 'Enterprise', 'Other'],
+  services: ['Website', 'Web App', 'Mobile App', 'AI Tool', 'Automation', 'System'],
+  budgets: ['Under $2k', '$2k-$5k', '$5k-$10k', '$10k+', 'Not sure yet'],
+};
+
+function svgIcon(name) {
+  const base = 'width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"';
+  const icons = {
+    arrow: `<svg ${base}><path d="M5 12h14" /><path d="m13 5 7 7-7 7" /></svg>`,
+    menu: `<svg ${base}><path d="M4 6h16" /><path d="M4 12h16" /><path d="M4 18h16" /></svg>`,
+    close: `<svg ${base}><path d="M6 6 18 18" /><path d="M18 6 6 18" /></svg>`,
+    globe: `<svg ${base}><circle cx="12" cy="12" r="9" /><path d="M3 12h18" /><path d="M12 3c2.5 2.7 4 5.8 4 9s-1.5 6.3-4 9c-2.5-2.7-4-5.8-4-9s1.5-6.3 4-9Z" /></svg>`,
+    window: `<svg ${base}><rect x="3" y="4" width="18" height="16" rx="2" /><path d="M3 8h18" /><path d="M7 6h.01" /><path d="M11 6h.01" /></svg>`,
+    phone: `<svg ${base}><rect x="7" y="2" width="10" height="20" rx="2.2" /><path d="M10 18h4" /></svg>`,
+    spark: `<svg ${base}><path d="m12 2 1.7 5.2L19 9l-5.3 1.8L12 16l-1.7-5.2L5 9l5.3-1.8L12 2Z" /><path d="M5 14l1 3 3 1-3 1-1 3-1-3-3-1 3-1 1-3Z" /></svg>`,
+    bot: `<svg ${base}><rect x="6" y="8" width="12" height="10" rx="3" /><path d="M9 8V6a3 3 0 0 1 6 0v2" /><path d="M9 12h.01" /><path d="M15 12h.01" /></svg>`,
+    dashboard: `<svg ${base}><rect x="3" y="4" width="18" height="16" rx="2" /><path d="M8 17V9" /><path d="M12 17V7" /><path d="M16 17v-5" /></svg>`,
+    search: `<svg ${base}><circle cx="11" cy="11" r="6" /><path d="m20 20-3.5-3.5" /></svg>`,
+    map: `<svg ${base}><path d="m9 18-6 3V6l6-3 6 3 6-3v15l-6 3-6-3Z" /><path d="M9 3v15" /><path d="M15 6v15" /></svg>`,
+    pen: `<svg ${base}><path d="M12 20h9" /><path d="M16.5 3.5 20.5 7.5 8 20H4v-4Z" /></svg>`,
+    code: `<svg ${base}><path d="m9 18-6-6 6-6" /><path d="m15 6 6 6-6 6" /><path d="m14 4-4 16" /></svg>`,
+    workflow: `<svg ${base}><path d="M7 7h10v10H7z" /><path d="M7 12H3" /><path d="M21 12h-4" /><path d="M12 7V3" /><path d="M12 21v-4" /></svg>`,
+    rocket: `<svg ${base}><path d="M14 4c2.5.2 4.8 2.5 5 5-1.8.4-3.2 1.4-4.4 2.6L10 16l-2-2 4.4-4.6C13.6 8 14.6 6.6 15 4.8" /><path d="M9 15l-2 2-2-2 2-2" /><path d="M8 16c-1.4 1.5-2.4 3.4-2.8 5.2 1.8-.4 3.7-1.4 5.2-2.8" /></svg>`,
+    chat: `<svg ${base}><path d="M21 15a4 4 0 0 1-4 4H8l-5 3V7a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4z" /><path d="M8 9h8" /><path d="M8 13h5" /></svg>`,
+    shield: `<svg ${base}><path d="M12 3 20 6v6c0 5-3.5 8.5-8 11-4.5-2.5-8-6-8-11V6Z" /><path d="M9 12l2 2 4-4" /></svg>`,
+    whatsapp: `<svg ${base}><path d="M20 11.6A8 8 0 0 1 8.3 19L4 20l1-4.1A8 8 0 1 1 20 11.6Z" /><path d="M9 9.5c.3-1 1-1.2 1.5-1 .4.2 1 1.3 1.1 1.4.2.2.2.4 0 .7l-.6.7c-.2.2-.2.4 0 .7.2.4 1 1.6 2.1 2.2.9.5 1.7.7 2.1.6.3 0 .5-.2.7-.4l.6-.6c.2-.2.5-.2.7 0l1.4.6c.3.1.5.4.4.7-.2 1.1-1 2-2.1 2.3-1.3.4-3.1.1-4.9-1-1.7-1.1-3.2-2.9-4-4.6-.9-2-.8-3.7-.3-4.9Z" /></svg>`,
+    star: `<svg ${base}><path d="m12 2 2.9 6 6.6.9-4.8 4.6 1.1 6.5-5.8-3-5.8 3 1.1-6.5-4.8-4.6 6.6-.9L12 2Z" /></svg>`,
   };
-
-  return map[name] || '';
+  return icons[name] || icons.arrow;
 }
 
-function createElement(tag, className, html) {
-  const el = document.createElement(tag);
-  if (className) el.className = className;
-  if (html) el.innerHTML = html;
-  return el;
+function projectPreview(project, index) {
+  if (project.image) {
+    return `<img src="${project.image}" alt="${project.title}" loading="lazy" />`;
+  }
+
+  return `
+    <div class="project-preview-fallback project-preview-fallback-${index}">
+      <div class="fallback-grid"></div>
+      <div class="fallback-chip">${svgIcon('spark')}</div>
+    </div>
+  `;
 }
 
-function scrollToSection(id) {
-  const el = document.getElementById(id);
-  if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+function faqMarkup() {
+  return FAQS.map((item) => `
+    <details class="faq-item">
+      <summary>${item.q}<span>${svgIcon('arrow')}</span></summary>
+      <div class="faq-answer">${item.a}</div>
+    </details>
+  `).join('');
+}
+
+function servicesMarkup() {
+  return SERVICES.map((service) => `
+    <article class="service-card">
+      <div class="service-icon">${svgIcon(service.icon)}</div>
+      <h3>${service.title}</h3>
+      <p>${service.description}</p>
+      <div class="service-foot">
+        <span>${service.benefit}</span>
+        <a href="#contact">Learn more ${svgIcon('arrow')}</a>
+      </div>
+    </article>
+  `).join('');
+}
+
+function projectsMarkup() {
+  return PROJECTS.map((project, index) => `
+    <article class="project-card">
+      <div class="project-visual">${projectPreview(project, index + 1)}</div>
+      <div class="project-copy">
+        <div class="project-chip">${project.category}</div>
+        <h3>${project.title}</h3>
+        <p><strong>Problem:</strong> ${project.problem}</p>
+        <p><strong>Solution:</strong> ${project.solution}</p>
+        <p><strong>Result:</strong> ${project.result}</p>
+        <a href="#contact" class="text-link">Build something similar ${svgIcon('arrow')}</a>
+      </div>
+    </article>
+  `).join('');
+}
+
+function processMarkup() {
+  return PROCESS.map((step) => `
+    <article class="process-step">
+      <div class="process-top">
+        <span class="process-index">${step.step}</span>
+        <span class="process-icon">${svgIcon(step.icon)}</span>
+      </div>
+      <h3>${step.title}</h3>
+      <p>${step.description}</p>
+    </article>
+  `).join('');
+}
+
+function trustMarkup() {
+  return TRUST.map((item) => `
+    <article class="trust-card">
+      <div class="trust-mark">${svgIcon('shield')}</div>
+      <h3>${item.title}</h3>
+      <p>${item.text}</p>
+    </article>
+  `).join('');
+}
+
+function transformationMarkup() {
+  return `
+    <div class="transformation-grid">
+      <div class="transformation-comparison">
+        <div class="comparison-card comparison-before">
+          <span>Before</span>
+          <h3>Manual and scattered</h3>
+          <ul>${TRANSFORMATION.slice(0, 4).map((item) => `<li>${item}</li>`).join('')}</ul>
+        </div>
+        <div class="comparison-arrow">${svgIcon('arrow')}</div>
+        <div class="comparison-card comparison-after">
+          <span>After</span>
+          <h3>Connected and clear</h3>
+          <ul>${TRANSFORMATION.slice(4).map((item) => `<li>${item}</li>`).join('')}</ul>
+        </div>
+      </div>
+      <div class="transformation-image">
+        <img src="${ASSETS.transformation}" alt="Shift Digital digital transformation concept" loading="lazy" />
+      </div>
+    </div>
+  `;
+}
+
+function contactOptionsMarkup(name, options) {
+  return options.map((option) => `<option value="${option}">${option}</option>`).join('');
 }
 
 function mountApp() {
   const app = document.getElementById('app');
   if (!app) return;
 
-  app.innerHTML = '';
+  document.title = 'ShiftDigital | Websites, Apps, AI Tools & Automation';
 
-  const shell = createElement('div', 'site-shell');
+  app.innerHTML = `
+    <div class="site-shell">
+      <header class="site-header">
+        <div class="container header-inner">
+          <a class="brand" href="#home" aria-label="ShiftDigital home">
+            <span class="brand-mark">
+              <img src="${ASSETS.mark}" alt="" aria-hidden="true" />
+            </span>
+            <span class="brand-copy">
+              <strong>ShiftDigital</strong>
+              <span>Digital transformation. Real growth.</span>
+            </span>
+          </a>
 
-  const header = createElement('header', 'site-header');
-  header.innerHTML = `
-    <div class="container header-inner">
-      <a class="brand" href="#home" aria-label="ShiftDigital home">
-        <span class="brand-mark">${icon('code')}</span>
-        <span class="brand-wordmark">Shift<span>Digital</span></span>
-      </a>
-      <nav class="site-nav" aria-label="Primary">
-        <a href="#services">Services</a>
-        <a href="#work">Work</a>
-        <a href="#process">Process</a>
-        <a href="#contact">Contact</a>
-      </nav>
-      <a class="btn btn-primary btn-compact" href="#contact">
-        Get in touch
-        <span class="btn-icon-wrap">${icon('arrow')}</span>
-      </a>
-    </div>
-  `;
-  shell.appendChild(header);
+          <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-nav">
+            <span class="sr-only">Toggle navigation</span>
+            ${svgIcon('menu')}
+          </button>
 
-  const main = createElement('main');
-
-  const hero = createElement('section', 'hero-section');
-  hero.id = 'home';
-  hero.innerHTML = `
-    <div class="container hero-grid">
-      <div class="hero-copy">
-        <h1>ShiftDigital builds websites, apps, and dashboards that move businesses forward.</h1>
-        <p class="hero-lead">I design and build fast, reliable digital products for companies that need a strong presence and a clean technical foundation.</p>
-        <div class="hero-actions">
-          <a class="btn btn-primary" href="#contact">Start a project <span class="btn-icon-wrap">${icon('arrow')}</span></a>
-          <a class="btn btn-secondary" href="#work">View work</a>
+          <nav id="primary-nav" class="primary-nav" aria-label="Primary">
+            ${NAV_ITEMS.map((item) => `<a href="${item.href}" data-nav-link>${item.label}</a>`).join('')}
+            <a class="btn btn-primary btn-sm" href="#contact">Start Your Digital Shift ${svgIcon('arrow')}</a>
+          </nav>
         </div>
-        <div class="hero-points" aria-label="Capabilities">
-          <div>${icon('browser')} Full-stack development</div>
-          <div>${icon('grid')} Clean architecture</div>
-          <div>${icon('chart')} Performance focused</div>
-          <div>${icon('rocket')} Built for growth</div>
-        </div>
-      </div>
-      <div class="hero-visual" aria-label="Product preview montage">
-        <div class="visual-browser visual-panel">
-          <div class="window-dots"><span></span><span></span><span></span></div>
-          <div class="browser-top">
-            <div class="browser-brand">NEXORA</div>
-            <div class="browser-nav">
-              <span>Products</span><span>Solutions</span><span>Pricing</span><span>About</span>
-            </div>
-            <button type="button">Request demo</button>
-          </div>
-          <div class="browser-body">
-            <div>
-              <h2>Simplify operations.<br />Drive results.</h2>
-              <p>Premium web experiences that explain the offer, show the product, and convert attention into action.</p>
-              <div class="browser-actions">
-                <button type="button" class="mini-primary">Explore platform</button>
-                <button type="button" class="mini-link">Learn more</button>
+      </header>
+
+      <main>
+        <section class="hero section-block" id="home">
+          <div class="container hero-grid">
+            <div class="hero-copy">
+              <div class="hero-logo">
+                <img src="${ASSETS.logo}" alt="Shift Digital logo" />
+              </div>
+              <h1>Build Faster. Transform Smarter. Grow Digitally.</h1>
+              <p class="hero-lead">Shift Digital helps businesses launch premium websites, web apps, mobile apps, AI tools, automation systems, and dashboards that make everyday work clearer and faster.</p>
+              <div class="hero-actions">
+                <a class="btn btn-primary" href="#contact">Start Your Digital Shift ${svgIcon('arrow')}</a>
+                <a class="btn btn-secondary" href="#projects">View Projects</a>
+              </div>
+              <div class="hero-points">
+                <div>${svgIcon('window')} Websites and web apps</div>
+                <div>${svgIcon('phone')} Mobile-first experiences</div>
+                <div>${svgIcon('spark')} AI and automation</div>
+                <div>${svgIcon('dashboard')} Dashboards and systems</div>
+              </div>
+              <div class="hero-strip">
+                <span>Trusted digital partner for growth-minded businesses</span>
+                <img src="${ASSETS.mark}" alt="" aria-hidden="true" />
               </div>
             </div>
-            <div class="browser-graphic">
-              <div class="browser-graphic-core"></div>
-            </div>
-          </div>
-        </div>
 
-        <div class="visual-phone visual-panel">
-          <div class="phone-notch"></div>
-          <div class="phone-screen">
-            <div class="phone-top">
-              <span>9:11</span>
-              <span>•••</span>
-            </div>
-            <div class="phone-copy">
-              <p>Good morning, Alex</p>
-              <strong>$24,680.50</strong>
-              <span>Total balance</span>
-            </div>
-            <div class="phone-list">
-              <div><span>Payment received</span><b>+ $2,480.00</b></div>
-              <div><span>Subscription</span><b>- $49.00</b></div>
-              <div><span>Invoice</span><b>- $2,390.00</b></div>
-            </div>
-            <div class="phone-nav">
-              <span class="active"></span><span></span><span></span><span></span><span></span>
-            </div>
-          </div>
-        </div>
-
-        <div class="visual-dashboard visual-panel">
-          <div class="dash-header">
-            <span>Analytics Overview</span>
-            <span class="dash-pill">This month</span>
-          </div>
-          <div class="dash-metrics">
-            <div><small>Revenue</small><strong>$128,540</strong><span>+14.6%</span></div>
-            <div><small>Users</small><strong>18,842</strong><span>+8.3%</span></div>
-            <div><small>Conversions</small><strong>3.86%</strong><span>+12.7%</span></div>
-            <div><small>Avg. order</small><strong>$86.35</strong><span>+5.7%</span></div>
-          </div>
-          <div class="dash-chart">
-            <span></span><span></span><span></span><span></span><span></span><span></span>
-          </div>
-          <div class="dash-list">
-            <div><span>Product A</span><i></i><b>$48,540</b></div>
-            <div><span>Product B</span><i></i><b>$32,845</b></div>
-            <div><span>Product C</span><i></i><b>$17,640</b></div>
-            <div><span>Product D</span><i></i><b>$12,145</b></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  `;
-  main.appendChild(hero);
-
-  const servicesSection = createElement('section', 'section-band');
-  servicesSection.id = 'services';
-  servicesSection.innerHTML = `
-    <div class="container">
-      <div class="section-heading">
-        <h2>End-to-end solutions. Built to perform.</h2>
-        <p>From brand sites to internal tools, I build systems that are clear, maintainable, and ready to ship.</p>
-      </div>
-      <div class="service-grid">
-        ${services.map((service) => `
-          <article class="service-card">
-            <div class="service-icon">${icon(service.icon)}</div>
-            <h3>${service.title}</h3>
-            <p>${service.description}</p>
-            <a href="#contact" class="text-link">Learn more ${icon('arrow')}</a>
-          </article>
-        `).join('')}
-      </div>
-    </div>
-  `;
-  main.appendChild(servicesSection);
-
-  const processSection = createElement('section', 'section-band section-band-tight');
-  processSection.id = 'process';
-  processSection.innerHTML = `
-    <div class="container">
-      <div class="section-heading">
-        <h2>A clear process. Predictable results.</h2>
-        <p>Simple, collaborative steps keep the work moving and the scope grounded.</p>
-      </div>
-      <div class="process-grid">
-        ${process.map((item, index) => `
-          <article class="process-step">
-            <div class="process-index">${item.step}</div>
-            <div class="process-icon">${icon(item.icon)}</div>
-            <h3>${item.title}</h3>
-            <p>${item.description}</p>
-            ${index < process.length - 1 ? '<div class="process-line" aria-hidden="true"></div>' : ''}
-          </article>
-        `).join('')}
-      </div>
-    </div>
-  `;
-  main.appendChild(processSection);
-
-  const workSection = createElement('section', 'section-band');
-  workSection.id = 'work';
-  workSection.innerHTML = `
-    <div class="container">
-      <div class="section-heading section-heading-row">
-        <div>
-          <h2>Recent projects that deliver impact.</h2>
-          <p>Selected builds and system concepts that show how I think about product, polish, and execution.</p>
-        </div>
-        <a class="text-link" href="#contact">View all work ${icon('arrow')}</a>
-      </div>
-      <div class="project-grid">
-        ${projects.map((project, index) => `
-          <article class="project-card">
-            <div class="project-preview project-preview-${index + 1}">
-              <div class="project-window">
-                <div class="window-dots"><span></span><span></span><span></span></div>
-                <div class="project-window-inner">
-                  <div class="project-mini-title">${project.name}</div>
-                  <div class="project-mini-chart"></div>
+            <div class="hero-visual">
+              <figure class="hero-figure">
+                <img src="${ASSETS.hero}" alt="Shift Digital website and app preview" loading="eager" />
+              </figure>
+              <div class="hero-metrics">
+                <div>
+                  <strong>Fast builds</strong>
+                  <span>Clean, responsive delivery</span>
+                </div>
+                <div>
+                  <strong>Better clarity</strong>
+                  <span>Simple UX for non-technical users</span>
+                </div>
+                <div>
+                  <strong>Real growth</strong>
+                  <span>Websites, apps, and automation that support sales</span>
                 </div>
               </div>
             </div>
-            <div class="project-content">
-              <h3>${project.name}</h3>
-              <span>${project.type}</span>
-              <p>${project.description}</p>
-              <a href="#contact" class="text-link">View case study ${icon('arrow')}</a>
+          </div>
+        </section>
+
+        <section class="section-block section-alt" id="about">
+          <div class="container split-grid">
+            <div class="content-stack">
+              <h2>About Shift Digital</h2>
+              <p>Shift Digital is a full-stack development studio focused on premium websites, app interfaces, AI tools, and digital systems that help businesses feel more modern, organized, and trustworthy.</p>
+              <p>The brand is built around a forward-moving digital shift: motion, clarity, speed, and practical growth.</p>
+              <div class="mini-brand-card">
+                <img src="${ASSETS.logo}" alt="Shift Digital logo" />
+                <div>
+                  <strong>Official brand direction</strong>
+                  <span>Teal, blue, deep navy, and clean light surfaces.</span>
+                </div>
+              </div>
             </div>
-          </article>
-        `).join('')}
-      </div>
+            <div class="image-panel">
+              <img src="${ASSETS.transformation}" alt="Shift Digital transformation graphic" loading="lazy" />
+            </div>
+          </div>
+        </section>
+
+        <section class="section-block" id="founder">
+          <div class="container split-grid founder-grid">
+            <div class="founder-card">
+              <div class="founder-mark">
+                <img src="${ASSETS.mark}" alt="" aria-hidden="true" />
+              </div>
+              <h2>About Dr. Ahmed Awni</h2>
+              <p>Dr. Ahmed Awni brings a rare mix of healthcare experience, developer thinking, and practical digital transformation strategy. That combination is useful when the work needs both empathy and structure.</p>
+              <p>He understands how to make technology feel clear for real people, especially for businesses that need trust, speed, and simplicity.</p>
+            </div>
+            <div class="trust-grid trust-grid-tight">
+              <article class="trust-tag">${svgIcon('shield')} Web Development</article>
+              <article class="trust-tag">${svgIcon('phone')} Mobile Apps</article>
+              <article class="trust-tag">${svgIcon('spark')} AI Tools</article>
+              <article class="trust-tag">${svgIcon('bot')} Automation</article>
+              <article class="trust-tag">${svgIcon('dashboard')} Business Systems</article>
+              <article class="trust-tag">${svgIcon('globe')} Healthcare + Digital Experience</article>
+            </div>
+          </div>
+        </section>
+
+        <section class="section-block section-alt" id="services">
+          <div class="container">
+            <div class="section-heading">
+              <p class="section-kicker">Services</p>
+              <h2>Everything needed to present a modern digital business.</h2>
+              <p>Each service is framed around business value, not technical jargon.</p>
+            </div>
+            <div class="service-grid">
+              ${servicesMarkup()}
+            </div>
+          </div>
+        </section>
+
+        <section class="section-block" id="transformation">
+          <div class="container split-grid transformation-section">
+            <div class="content-stack">
+              <p class="section-kicker">Digital transformation</p>
+              <h2>Replace manual work with clearer digital systems.</h2>
+              <p>Digital transformation is not just software. It means fewer errors, faster workflows, clearer tracking, and a better experience for customers and teams.</p>
+              <div class="bullet-grid">
+                <div>${svgIcon('arrow')} Faster execution</div>
+                <div>${svgIcon('arrow')} Better customer experience</div>
+                <div>${svgIcon('arrow')} More scalability</div>
+                <div>${svgIcon('arrow')} Less repetitive work</div>
+              </div>
+              <a class="btn btn-secondary" href="#contact">Explore what to build next</a>
+            </div>
+            ${transformationMarkup()}
+          </div>
+        </section>
+
+        <section class="section-block section-alt" id="projects">
+          <div class="container">
+            <div class="section-heading section-heading-row">
+              <div>
+                <p class="section-kicker">Projects</p>
+                <h2>Portfolio examples that show the direction.</h2>
+                <p>Each sample emphasizes clarity, trust, and polished execution.</p>
+              </div>
+              <a class="text-link" href="#contact">Build something similar ${svgIcon('arrow')}</a>
+            </div>
+            <div class="project-grid">
+              ${projectsMarkup()}
+            </div>
+          </div>
+        </section>
+
+        <section class="section-block" id="process">
+          <div class="container">
+            <div class="section-heading">
+              <p class="section-kicker">Process</p>
+              <h2>A simple process that removes uncertainty.</h2>
+              <p>Discover, plan, design, build, automate, launch, and improve.</p>
+            </div>
+            <div class="process-grid">
+              ${processMarkup()}
+            </div>
+          </div>
+        </section>
+
+        <section class="section-block section-alt" id="trust">
+          <div class="container">
+            <div class="section-heading">
+              <p class="section-kicker">Trust</p>
+              <h2>Why clients trust the work.</h2>
+              <p>These are trust statements rather than fake testimonials, so the site stays honest until real quotes are available.</p>
+            </div>
+            <div class="trust-cards">
+              ${trustMarkup()}
+            </div>
+          </div>
+        </section>
+
+        <section class="section-block" id="faq">
+          <div class="container split-grid faq-grid">
+            <div class="content-stack">
+              <p class="section-kicker">FAQ</p>
+              <h2>Questions people usually ask first.</h2>
+              <p>Simple answers reduce friction and make it easier to start a project.</p>
+            </div>
+            <div class="faq-list">
+              ${faqMarkup()}
+            </div>
+          </div>
+        </section>
+
+        <section class="section-block section-alt" id="contact">
+          <div class="container contact-grid">
+            <div class="contact-copy">
+              <p class="section-kicker">Contact</p>
+              <h2>Start your digital shift.</h2>
+              <p>Tell us what you want to improve or build, and we will respond with a practical next step.</p>
+              <div class="contact-details">
+                <a href="mailto:hello@shiftdigital.dev">${svgIcon('chat')} hello@shiftdigital.dev</a>
+                <a href="tel:+14155550138">${svgIcon('phone')} +1 (415) 555-0138</a>
+                <a href="https://wa.me/14155550138" target="_blank" rel="noreferrer">${svgIcon('whatsapp')} WhatsApp</a>
+              </div>
+              <div class="contact-image">
+                <img src="${ASSETS.logo}" alt="Shift Digital logo" />
+              </div>
+            </div>
+
+            <form class="contact-form" id="lead-form" novalidate>
+              <div class="form-grid">
+                <label>
+                  <span>Full name *</span>
+                  <input name="name" type="text" placeholder="Ahmed Awni" required />
+                </label>
+                <label>
+                  <span>Email *</span>
+                  <input name="email" type="email" placeholder="hello@company.com" required />
+                </label>
+                <label>
+                  <span>Phone / WhatsApp</span>
+                  <input name="phone" type="tel" placeholder="+20 ..." />
+                </label>
+                <label>
+                  <span>Business type</span>
+                  <select name="businessType">
+                    <option value="">Select business type</option>
+                    ${contactOptionsMarkup('businessTypes', CONTACT_OPTIONS.businessTypes)}
+                  </select>
+                </label>
+                <label>
+                  <span>Service needed *</span>
+                  <select name="service" required>
+                    <option value="">Select a service</option>
+                    ${contactOptionsMarkup('services', CONTACT_OPTIONS.services)}
+                  </select>
+                </label>
+                <label>
+                  <span>Budget range</span>
+                  <select name="budget">
+                    <option value="">Select a range</option>
+                    ${contactOptionsMarkup('budgets', CONTACT_OPTIONS.budgets)}
+                  </select>
+                </label>
+              </div>
+              <label class="full-width">
+                <span>Message *</span>
+                <textarea name="message" rows="5" placeholder="Tell us about your project, goals, timeline, and what success looks like." required></textarea>
+              </label>
+              <div class="form-actions">
+                <button class="btn btn-primary" type="submit">Send Project Request ${svgIcon('arrow')}</button>
+                <a class="btn btn-secondary" href="https://wa.me/14155550138" target="_blank" rel="noreferrer">${svgIcon('whatsapp')} WhatsApp</a>
+              </div>
+              <p class="form-status" id="form-status" aria-live="polite"></p>
+            </form>
+          </div>
+        </section>
+      </main>
+
+      <a class="whatsapp-float" href="https://wa.me/14155550138" target="_blank" rel="noreferrer" aria-label="WhatsApp">
+        ${svgIcon('whatsapp')}
+      </a>
+
+      <footer class="site-footer">
+        <div class="container footer-grid">
+          <div class="footer-brand">
+            <img src="${ASSETS.logo}" alt="Shift Digital logo" />
+            <p>Full-stack development for websites, apps, mobile experiences, AI tools, and digital systems.</p>
+          </div>
+          <div>
+            <h3>Navigation</h3>
+            ${NAV_ITEMS.map((item) => `<a href="${item.href}">${item.label}</a>`).join('')}
+          </div>
+          <div>
+            <h3>Services</h3>
+            ${SERVICES.map((service) => `<a href="#services">${service.title}</a>`).join('')}
+          </div>
+          <div>
+            <h3>Contact</h3>
+            <a href="mailto:hello@shiftdigital.dev">hello@shiftdigital.dev</a>
+            <a href="https://wa.me/14155550138" target="_blank" rel="noreferrer">WhatsApp</a>
+            <a href="tel:+14155550138">+1 (415) 555-0138</a>
+          </div>
+        </div>
+        <div class="container footer-bottom">
+          <span>ShiftDigital. All rights reserved.</span>
+          <div class="footer-links">
+            <a href="#home">Back to top</a>
+          </div>
+        </div>
+      </footer>
     </div>
   `;
-  main.appendChild(workSection);
 
-  const contactSection = createElement('section', 'section-band section-contact');
-  contactSection.id = 'contact';
-  contactSection.innerHTML = `
-    <div class="container contact-grid">
-      <div class="contact-copy">
-        <p class="section-kicker">Have a project in mind?</p>
-        <h2>Let’s build something great together.</h2>
-        <p>Tell me what you’re building and I’ll get back within one business day with a straightforward next step.</p>
-        <div class="contact-details">
-          <a href="mailto:hello@shiftdigital.dev">hello@shiftdigital.dev</a>
-          <a href="tel:+14155550138">+1 (415) 555-0138</a>
-          <span>San Francisco, CA</span>
-        </div>
-      </div>
-      <form class="contact-form" id="contact-form">
-        <div class="field-row">
-          <label>
-            <span>Your name</span>
-            <input name="name" type="text" placeholder="Alex Morgan" required maxlength="80" />
-          </label>
-          <label>
-            <span>Work email</span>
-            <input name="email" type="email" placeholder="alex@company.com" required />
-          </label>
-        </div>
-        <label>
-          <span>Tell me about your project</span>
-          <textarea name="brief" rows="5" placeholder="A new website, app, dashboard, or a full product build." required maxlength="1000"></textarea>
-        </label>
-        <div class="contact-actions">
-          <button class="btn btn-primary" type="submit">Get in touch <span class="btn-icon-wrap">${icon('arrow')}</span></button>
-          <p class="form-note">Prefer email? Use the address above and I’ll reply there.</p>
-        </div>
-      </form>
-    </div>
-  `;
-  main.appendChild(contactSection);
+  const navToggle = document.querySelector('.nav-toggle');
+  const nav = document.querySelector('.primary-nav');
+  if (navToggle && nav) {
+    navToggle.addEventListener('click', () => {
+      const isOpen = nav.classList.toggle('is-open');
+      navToggle.setAttribute('aria-expanded', String(isOpen));
+      navToggle.innerHTML = isOpen ? svgIcon('close') : svgIcon('menu');
+    });
 
-  shell.appendChild(main);
-
-  const footer = createElement('footer', 'site-footer');
-  footer.innerHTML = `
-    <div class="container footer-grid">
-      <div>
-        <a class="brand brand-footer" href="#home">
-          <span class="brand-mark">${icon('code')}</span>
-          <span class="brand-wordmark">Shift<span>Digital</span></span>
-        </a>
-        <p>Full-stack development for websites, apps, dashboards, and the systems behind them.</p>
-      </div>
-      <div>
-        <h3>Services</h3>
-        <a href="#services">Websites</a>
-        <a href="#services">Web Apps</a>
-        <a href="#services">Mobile Apps</a>
-        <a href="#services">Systems Dashboards</a>
-      </div>
-      <div>
-        <h3>Company</h3>
-        <a href="#work">Work</a>
-        <a href="#process">Process</a>
-        <a href="#contact">About</a>
-        <a href="#contact">Contact</a>
-      </div>
-      <div>
-        <h3>Get in touch</h3>
-        ${socialLinks.map((link) => `<a href="${link.href}" target="_blank" rel="noreferrer">${link.label}</a>`).join('')}
-      </div>
-    </div>
-    <div class="container footer-bottom">
-      <span>ShiftDigital. All rights reserved.</span>
-      <div>
-        <a href="#home">Back to top</a>
-      </div>
-    </div>
-  `;
-  shell.appendChild(footer);
-
-  app.appendChild(shell);
+    nav.querySelectorAll('a').forEach((link) => {
+      link.addEventListener('click', () => {
+        nav.classList.remove('is-open');
+        navToggle.setAttribute('aria-expanded', 'false');
+        navToggle.innerHTML = svgIcon('menu');
+      });
+    });
+  }
 
   document.querySelectorAll('a[href^="#"]').forEach((link) => {
     link.addEventListener('click', (event) => {
       const href = link.getAttribute('href');
       if (!href || href === '#') return;
-      const id = href.slice(1);
-      if (document.getElementById(id)) {
+      const target = document.querySelector(href);
+      if (target) {
         event.preventDefault();
-        scrollToSection(id);
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
       }
     });
   });
 
-  const form = document.getElementById('contact-form');
-  if (form) {
+  if ('IntersectionObserver' in window) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        const id = entry.target.id;
+        document.querySelectorAll('[data-nav-link]').forEach((link) => {
+          link.classList.toggle('is-active', link.getAttribute('href') === `#${id}`);
+        });
+      });
+    }, { threshold: 0.4 });
+
+    document.querySelectorAll('section[id]').forEach((section) => observer.observe(section));
+  }
+
+  const form = document.getElementById('lead-form');
+  const status = document.getElementById('form-status');
+  if (form && status) {
     form.addEventListener('submit', (event) => {
       event.preventDefault();
       const data = new FormData(form);
       const name = String(data.get('name') || '').trim();
       const email = String(data.get('email') || '').trim();
-      const brief = String(data.get('brief') || '').trim();
+      const service = String(data.get('service') || '').trim();
+      const message = String(data.get('message') || '').trim();
+      const phone = String(data.get('phone') || '').trim();
+      const businessType = String(data.get('businessType') || '').trim();
+      const budget = String(data.get('budget') || '').trim();
 
-      if (!name || !email || !brief) {
-        window.alert('Please fill out the contact form.');
+      if (!name || !email || !service || !message) {
+        status.textContent = 'Please fill in the required fields before sending the request.';
+        status.className = 'form-status is-error';
         return;
       }
 
+      const body = [
+        `Name: ${name}`,
+        `Email: ${email}`,
+        phone ? `Phone / WhatsApp: ${phone}` : null,
+        businessType ? `Business type: ${businessType}` : null,
+        service ? `Service needed: ${service}` : null,
+        budget ? `Budget: ${budget}` : null,
+        '',
+        message,
+      ].filter(Boolean).join('\n');
+
+      status.textContent = 'Preparing your message...';
+      status.className = 'form-status is-success';
       const subject = encodeURIComponent(`Project inquiry from ${name}`);
-      const body = encodeURIComponent(`${brief}\n\nReply to: ${email}`);
-      window.location.href = `mailto:hello@shiftdigital.dev?subject=${subject}&body=${body}`;
+      const mailto = `mailto:hello@shiftdigital.dev?subject=${subject}&body=${encodeURIComponent(body)}`;
+      window.location.href = mailto;
     });
   }
 }

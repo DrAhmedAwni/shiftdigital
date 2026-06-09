@@ -1,43 +1,71 @@
-.hero-section::before,
-.section-band::before {
+.section-block {
+  position: relative;
+}
+
+.section-block::before {
   content: "";
   position: absolute;
   inset: 0;
   pointer-events: none;
 }
 
-.hero-section::before {
-  background:
-    linear-gradient(90deg, rgba(79, 134, 255, 0.08) 1px, transparent 1px),
-    linear-gradient(180deg, rgba(79, 134, 255, 0.06) 1px, transparent 1px);
-  background-size: 100px 100px;
-  mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.5), transparent 78%);
-  opacity: 0.55;
+.section-alt .section-heading h2,
+.section-alt .content-stack h2,
+.section-alt .founder-card h2,
+.section-alt .contact-copy h2 {
+  color: var(--brand-deep);
 }
 
-.section-band::before {
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
+.hero-figure,
+.mini-brand-card,
+.service-card,
+.project-card,
+.process-step,
+.trust-card,
+.faq-item,
+.contact-form,
+.founder-card,
+.image-panel,
+.transformation-image {
+  transition: transform 160ms ease, box-shadow 160ms ease, border-color 160ms ease;
 }
 
 .service-card:hover,
 .project-card:hover,
+.trust-card:hover,
+.process-step:hover,
+.faq-item:hover,
 .contact-form:hover {
-  background-color: rgba(255, 255, 255, 0.012);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+  border-color: rgba(28, 94, 164, 0.2);
 }
 
-.service-card:hover .service-icon,
-.process-step:hover .process-icon {
-  background: rgba(79, 134, 255, 0.18);
+.hero-figure:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
 }
 
-.text-link svg,
-.btn-icon-wrap svg {
-  transition: transform 0.18s ease;
+.mini-brand-card:hover {
+  transform: translateY(-2px);
 }
 
-.text-link:hover svg,
-.btn:hover .btn-icon-wrap svg {
-  transform: translateX(2px);
+.btn:active {
+  transform: translateY(0);
+}
+
+.btn-primary:hover,
+.service-foot a:hover,
+.text-link:hover,
+.primary-nav a:hover,
+.footer-grid a:hover,
+.contact-details a:hover {
+  transition: color 160ms ease, transform 160ms ease;
+}
+
+.primary-nav a:hover,
+.text-link:hover {
+  transform: translateX(1px);
 }
 
 @media (prefers-reduced-motion: reduce) {
