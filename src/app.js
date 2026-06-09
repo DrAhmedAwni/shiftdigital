@@ -8,7 +8,25 @@ const ASSETS = {
   hero: '/assets/shiftdigital-hero-innovation.png',
   transformation: '/assets/shiftdigital-transformation.png',
   mark: '/assets/shiftdigital-square-mark.png',
+  portfolio: {
+    getItDone: '/assets/portfolio/getitdone.png',
+    amgFeature: '/assets/portfolio/amg-academy-feature.png',
+    amgIcon: '/assets/portfolio/amg-academy-icon.png',
+    demoLab1: '/assets/portfolio/demo-lab-1.png',
+    demoLab2: '/assets/portfolio/demo-lab-2.png',
+    demoLabLogo: '/assets/portfolio/demo-lab-logo.png',
+  },
 };
+
+const CONTACT = {
+  email: 'shift.digital.ai@gmail.com',
+  phone: '+20 114 014 1320',
+  whatsapp: '201140141320',
+};
+
+const whatsappLink = (message = 'Hi Dr. Ahmed Awni, I would like to discuss a project for my business.') => (
+  `https://wa.me/${CONTACT.whatsapp}?text=${encodeURIComponent(message)}`
+);
 
 const NAV_ITEMS = [
   { label: 'Home', href: '#home' },
@@ -27,6 +45,12 @@ const SERVICES = [
     icon: 'globe',
   },
   {
+    title: 'Landing Pages',
+    description: 'High-converting campaign pages for startups, launches, offers, and paid ads.',
+    benefit: 'More qualified leads',
+    icon: 'window',
+  },
+  {
     title: 'Web App Development',
     description: 'Custom web applications that streamline workflows, reduce friction, and keep teams aligned.',
     benefit: 'Cleaner operations',
@@ -39,22 +63,22 @@ const SERVICES = [
     icon: 'phone',
   },
   {
+    title: 'Dashboards & Systems',
+    description: 'Operational dashboards and internal systems that make work easier to track and manage.',
+    benefit: 'More control',
+    icon: 'dashboard',
+  },
+  {
+    title: 'n8n Automation',
+    description: 'Automations that connect your website, app, forms, WhatsApp, and internal workflows.',
+    benefit: 'Fewer manual steps',
+    icon: 'bot',
+  },
+  {
     title: 'AI Tools',
     description: 'Practical AI features that save time, surface insights, and support smarter decisions.',
     benefit: 'Less manual work',
     icon: 'spark',
-  },
-  {
-    title: 'Business Automation',
-    description: 'Automations for repetitive tasks, follow-ups, approvals, and internal handoffs.',
-    benefit: 'Fewer errors',
-    icon: 'bot',
-  },
-  {
-    title: 'Digital Systems',
-    description: 'Dashboards and internal systems that make it easier to monitor, manage, and scale.',
-    benefit: 'More control',
-    icon: 'dashboard',
   },
 ];
 
@@ -71,36 +95,28 @@ const TRANSFORMATION = [
 
 const PROJECTS = [
   {
-    title: 'Clinic Launch Website',
-    category: 'Website',
-    problem: 'Needed a trustworthy site that made services and contact options instantly clear.',
-    solution: 'A clean conversion-focused structure with stronger storytelling and contact flow.',
-    result: 'More qualified inquiries and a more professional first impression.',
-    image: ASSETS.hero,
+    title: 'GetItDone',
+    category: 'Mobile Productivity App',
+    problem: 'Needed a simple daily command center for tasks, appointments, due dates, and reminders.',
+    solution: 'An Android-first app for planning the day, tracking overdue items, and receiving timely reminders.',
+    result: 'A clearer workflow for users who want to stay organized and act on what matters today.',
+    media: [ASSETS.portfolio.getItDone],
   },
   {
-    title: 'Operations Dashboard',
-    category: 'Systems Dashboard',
-    problem: 'Teams were tracking work across too many sheets and chat threads.',
-    solution: 'A centralized dashboard with status visibility, priorities, and clear next actions.',
-    result: 'Less confusion and faster handoff between team members.',
-    image: ASSETS.transformation,
+    title: 'AMG Academy',
+    category: 'Dental Learning App',
+    problem: 'Needed one place for courses, event registrations, tickets, certificates, and announcements.',
+    solution: 'A professional learning and community app for dental professionals under Allam Medical Group.',
+    result: 'A smoother experience for doctors, students, and academy members to stay connected.',
+    media: [ASSETS.portfolio.amgFeature, ASSETS.portfolio.amgIcon],
   },
   {
-    title: 'Mobile Service App',
-    category: 'Mobile App',
-    problem: 'Field users needed a simple way to complete tasks from their phones.',
-    solution: 'A streamlined mobile workflow with focused screens and minimal friction.',
-    result: 'More work completed without returning to desktop tools.',
-    image: ASSETS.mark,
-  },
-  {
-    title: 'AI Automation Flow',
-    category: 'AI Tool',
-    problem: 'Manual follow-up tasks were taking too long to manage.',
-    solution: 'An AI-assisted workflow that organized requests and routed actions automatically.',
-    result: 'Faster turnaround with less repetitive work.',
-    image: null,
+    title: 'Demo Lab',
+    category: 'White-label Dental Lab System',
+    problem: 'Needed a way to submit dental cases, track production, manage technicians, inventory, finance, and reporting.',
+    solution: 'A white-label lab platform that automates case intake, WhatsApp alerts, workflow tracking, and invoices.',
+    result: 'Better visibility across the full case lifecycle from submission to delivery.',
+    media: [ASSETS.portfolio.demoLab1, ASSETS.portfolio.demoLab2, ASSETS.portfolio.demoLabLogo],
   },
 ];
 
@@ -167,7 +183,7 @@ const TRUST = [
 const FAQS = [
   {
     q: 'What does Shift Digital build?',
-    a: 'Websites, web apps, mobile apps, AI tools, automation flows, and internal systems that help businesses work better.',
+    a: 'Websites, landing pages, web apps, mobile apps, dashboards, AI tools, and automation flows that help businesses work better.',
   },
   {
     q: 'Can you help me decide what my business needs?',
@@ -175,7 +191,11 @@ const FAQS = [
   },
   {
     q: 'Do you work with clinics and small businesses?',
-    a: 'Yes. The site is designed to speak clearly to both service businesses and growth-focused companies.',
+    a: 'Yes. We work with startups, small businesses, dental clinics, medical teams, creators, and service brands.',
+  },
+  {
+    q: 'Can you connect forms to WhatsApp or n8n?',
+    a: 'Yes. We can connect your website, app, or landing page to WhatsApp, email, CRM tools, and n8n workflows.',
   },
   {
     q: 'How long does a project take?',
@@ -192,8 +212,8 @@ const FAQS = [
 ];
 
 const CONTACT_OPTIONS = {
-  businessTypes: ['Clinic', 'Local business', 'Startup', 'Enterprise', 'Other'],
-  services: ['Website', 'Web App', 'Mobile App', 'AI Tool', 'Automation', 'System'],
+  businessTypes: ['Startup', 'Small business', 'Dental clinic', 'Medical practice', 'Creator', 'Other'],
+  services: ['Landing Page', 'Website', 'Web App', 'Mobile App', 'Dashboard / System', 'Automation with n8n', 'AI Tool'],
   budgets: ['Under $2k', '$2k-$5k', '$5k-$10k', '$10k+', 'Not sure yet'],
 };
 
@@ -224,14 +244,45 @@ function svgIcon(name) {
 }
 
 function projectPreview(project, index) {
-  if (project.image) {
-    return `<img src="${project.image}" alt="${project.title}" loading="lazy" />`;
+  if (!project.media || project.media.length === 0) {
+    return `
+      <div class="project-preview-fallback project-preview-fallback-${index}">
+        <div class="fallback-grid"></div>
+        <div class="fallback-chip">${svgIcon('spark')}</div>
+      </div>
+    `;
+  }
+
+  if (project.media.length === 1) {
+    return `
+      <div class="project-media project-media-one">
+        <img src="${project.media[0]}" alt="${project.title} preview" loading="eager" />
+      </div>
+    `;
+  }
+
+  if (project.media.length === 2) {
+    return `
+      <div class="project-media project-media-two">
+        <div class="project-media-main">
+          <img src="${project.media[0]}" alt="${project.title} preview" loading="eager" />
+        </div>
+        <div class="project-media-side">
+          <img src="${project.media[1]}" alt="${project.title} secondary view" loading="eager" />
+        </div>
+      </div>
+    `;
   }
 
   return `
-    <div class="project-preview-fallback project-preview-fallback-${index}">
-      <div class="fallback-grid"></div>
-      <div class="fallback-chip">${svgIcon('spark')}</div>
+    <div class="project-media project-media-three">
+      <div class="project-media-main">
+        <img src="${project.media[0]}" alt="${project.title} preview" loading="eager" />
+      </div>
+      <div class="project-media-stack">
+        <img src="${project.media[1]}" alt="${project.title} secondary view" loading="eager" />
+        <img src="${project.media[2]}" alt="${project.title} brand view" loading="eager" />
+      </div>
     </div>
   `;
 }
@@ -329,7 +380,7 @@ function mountApp() {
   const app = document.getElementById('app');
   if (!app) return;
 
-  document.title = 'ShiftDigital | Websites, Apps, AI Tools & Automation';
+  document.title = 'ShiftDigital | Websites, Apps, Automation & Lead Generation';
 
   app.innerHTML = `
     <div class="site-shell">
@@ -365,16 +416,16 @@ function mountApp() {
                 <img src="${ASSETS.logo}" alt="Shift Digital logo" />
               </div>
               <h1>Build Faster. Transform Smarter. Grow Digitally.</h1>
-              <p class="hero-lead">Shift Digital helps businesses launch premium websites, web apps, mobile apps, AI tools, automation systems, and dashboards that make everyday work clearer and faster.</p>
+              <p class="hero-lead">Shift Digital builds premium websites, landing pages, web apps, mobile apps, dashboards, and n8n automations for startups, small businesses, dental clinics, medical teams, photographers, makers, and other growth-focused brands.</p>
               <div class="hero-actions">
                 <a class="btn btn-primary" href="#contact">Start Your Digital Shift ${svgIcon('arrow')}</a>
                 <a class="btn btn-secondary" href="#projects">View Projects</a>
               </div>
               <div class="hero-points">
-                <div>${svgIcon('window')} Websites and web apps</div>
-                <div>${svgIcon('phone')} Mobile-first experiences</div>
-                <div>${svgIcon('spark')} AI and automation</div>
+                <div>${svgIcon('window')} Websites and landing pages</div>
+                <div>${svgIcon('phone')} Mobile apps</div>
                 <div>${svgIcon('dashboard')} Dashboards and systems</div>
+                <div>${svgIcon('bot')} n8n automation</div>
               </div>
               <div class="hero-strip">
                 <span>Trusted digital partner for growth-minded businesses</span>
@@ -449,7 +500,7 @@ function mountApp() {
           <div class="container">
             <div class="section-heading">
               <p class="section-kicker">Services</p>
-              <h2>Everything needed to present a modern digital business.</h2>
+              <h2>Everything needed to present and automate a modern digital business.</h2>
               <p>Each service is framed around business value, not technical jargon.</p>
             </div>
             <div class="service-grid">
@@ -480,7 +531,7 @@ function mountApp() {
           <div class="container">
             <div class="section-heading section-heading-row">
               <div>
-                <p class="section-kicker">Projects</p>
+              <p class="section-kicker">Projects</p>
                 <h2>Portfolio examples that show the direction.</h2>
                 <p>Each sample emphasizes clarity, trust, and polished execution.</p>
               </div>
@@ -538,9 +589,9 @@ function mountApp() {
               <h2>Start your digital shift.</h2>
               <p>Tell us what you want to improve or build, and we will respond with a practical next step.</p>
               <div class="contact-details">
-                <a href="mailto:hello@shiftdigital.dev">${svgIcon('chat')} hello@shiftdigital.dev</a>
-                <a href="tel:+14155550138">${svgIcon('phone')} +1 (415) 555-0138</a>
-                <a href="https://wa.me/14155550138" target="_blank" rel="noreferrer">${svgIcon('whatsapp')} WhatsApp</a>
+                <a href="mailto:${CONTACT.email}">${svgIcon('chat')} ${CONTACT.email}</a>
+                <a href="tel:${CONTACT.phone.replace(/\s+/g, '')}">${svgIcon('phone')} ${CONTACT.phone}</a>
+                <a href="${whatsappLink()}" target="_blank" rel="noreferrer">${svgIcon('whatsapp')} WhatsApp</a>
               </div>
               <div class="contact-image">
                 <img src="${ASSETS.logo}" alt="Shift Digital logo" />
@@ -589,7 +640,7 @@ function mountApp() {
               </label>
               <div class="form-actions">
                 <button class="btn btn-primary" type="submit">Send Project Request ${svgIcon('arrow')}</button>
-                <a class="btn btn-secondary" href="https://wa.me/14155550138" target="_blank" rel="noreferrer">${svgIcon('whatsapp')} WhatsApp</a>
+                <a class="btn btn-secondary" href="${whatsappLink()}" target="_blank" rel="noreferrer">${svgIcon('whatsapp')} WhatsApp</a>
               </div>
               <p class="form-status" id="form-status" aria-live="polite"></p>
             </form>
@@ -597,7 +648,7 @@ function mountApp() {
         </section>
       </main>
 
-      <a class="whatsapp-float" href="https://wa.me/14155550138" target="_blank" rel="noreferrer" aria-label="WhatsApp">
+      <a class="whatsapp-float" href="${whatsappLink()}" target="_blank" rel="noreferrer" aria-label="WhatsApp">
         ${svgIcon('whatsapp')}
       </a>
 
@@ -617,9 +668,9 @@ function mountApp() {
           </div>
           <div>
             <h3>Contact</h3>
-            <a href="mailto:hello@shiftdigital.dev">hello@shiftdigital.dev</a>
-            <a href="https://wa.me/14155550138" target="_blank" rel="noreferrer">WhatsApp</a>
-            <a href="tel:+14155550138">+1 (415) 555-0138</a>
+            <a href="mailto:${CONTACT.email}">${CONTACT.email}</a>
+            <a href="${whatsappLink()}" target="_blank" rel="noreferrer">WhatsApp</a>
+            <a href="tel:${CONTACT.phone.replace(/\s+/g, '')}">${CONTACT.phone}</a>
           </div>
         </div>
         <div class="container footer-bottom">
@@ -710,7 +761,7 @@ function mountApp() {
       status.textContent = 'Preparing your message...';
       status.className = 'form-status is-success';
       const subject = encodeURIComponent(`Project inquiry from ${name}`);
-      const mailto = `mailto:hello@shiftdigital.dev?subject=${subject}&body=${encodeURIComponent(body)}`;
+      const mailto = `mailto:${CONTACT.email}?subject=${subject}&body=${encodeURIComponent(body)}`;
       window.location.href = mailto;
     });
   }

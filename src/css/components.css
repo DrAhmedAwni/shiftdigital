@@ -311,7 +311,6 @@
 
 .image-panel img,
 .transformation-image img,
-.project-visual img,
 .contact-image img {
   width: 100%;
   border-radius: calc(var(--radius-lg) - 6px);
@@ -492,6 +491,49 @@
   background: linear-gradient(135deg, rgba(28, 94, 164, 0.08), rgba(38, 156, 169, 0.08));
 }
 
+.project-media {
+  display: grid;
+  gap: 10px;
+  height: 220px;
+}
+
+.project-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+.project-media-one {
+  height: 220px;
+}
+
+.project-media-two,
+.project-media-three {
+  grid-template-columns: minmax(0, 1.25fr) minmax(0, 0.75fr);
+}
+
+.project-media-main {
+  height: 220px;
+  overflow: hidden;
+}
+
+.project-media-side {
+  height: 220px;
+  overflow: hidden;
+}
+
+.project-media-stack {
+  display: grid;
+  gap: 10px;
+  height: 220px;
+  grid-template-rows: repeat(2, minmax(0, 1fr));
+}
+
+.project-media-stack img {
+  min-height: 0;
+}
+
 .project-preview-fallback {
   position: relative;
   min-height: 220px;
@@ -631,6 +673,10 @@
 .contact-details {
   display: grid;
   gap: 12px;
+}
+
+.contact-details a {
+  width: fit-content;
 }
 
 .contact-image {
@@ -846,4 +892,3 @@
     bottom: 16px;
   }
 }
-
