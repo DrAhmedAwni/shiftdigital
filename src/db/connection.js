@@ -34,7 +34,7 @@ async function saveToOPFS(data) {
 
 export async function initDatabase() {
   const SQL = await initSqlJs({
-    locateFile: (file) => `https://sql.js.org/dist/${file}`,
+    locateFile: (file) => `/${file}`,
   });
 
   const savedData = await loadFromOPFS();
